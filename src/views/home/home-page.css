@@ -2,7 +2,16 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin: 10px 0px;
+  margin: 10px 10px 10px 0px;
+}
+
+.home_page-select_box-search_label {
+  margin-right: 10px;
+}
+
+.home_page-select_box-search {
+  width: 304px;
+  margin-right: 25px;
 }
 
 .home_page-select_box-label {

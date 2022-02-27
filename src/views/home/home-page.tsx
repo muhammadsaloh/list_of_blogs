@@ -1,6 +1,6 @@
 import React from "react";
 import { Posts, SinglePost } from "../../services/requests/home-page";
-import { Table, Tag, Button, Tooltip, Modal, Select } from "antd";
+import { Table, Tag, Button, Tooltip, Modal, Select, Input } from "antd";
 import { FileTextOutlined } from "@ant-design/icons";
 import "./home-page.css";
 
@@ -8,7 +8,8 @@ const HomePage: React.FC = () => {
   const [modal, setModal] = React.useState<boolean>(false);
   const [postId, setPostId] = React.useState<number>();
   const [userId, setUserId] = React.useState<number>();
-  const PostsData = Posts(`${userId && `userId=${userId}`}`);
+  const [search, setSearch] = React.useState<string>("");
+  const PostsData = Posts(`${userId && `userId=${userId}`}&like_title=${search}`);
   const SinglePostData = SinglePost(postId);
 
   const columns = [
@@ -48,10 +49,13 @@ const HomePage: React.FC = () => {
   const users = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   const handleSelectChange = (userId: number) => setUserId(userId);
+  const handleSearchChange = (value: string) => setSearch(value)
 
   return (
     <div className="home_page">
       <div className="home_page-select_box">
+        <label className="home_page-select_box-search_label" htmlFor="search">Search</label>
+        <Input.Search onSearch={handleSearchChange} id="search" className="home_page-select_box-search" placeholder="Search" />
         <label htmlFor="select" className="home_page-select_box-label">
           Select userId
         </label>
