@@ -1,7 +1,7 @@
 import React, { lazy } from "react";
 
 // App Pages
-const HomePage = lazy(() => import("./views/home/HomePage"));
+const HomePage = lazy(() => import("./views/home/home-page"));
 
 export enum Routes {
   HOME = "/",

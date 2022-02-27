@@ -1,20 +1,11 @@
 import React from "react";
-import { request } from "../../api";
+import Posts from "../../services/requests/home-page";
 import { Table, Tag, Button, Tooltip, Modal } from "antd";
 import { FileTextOutlined } from "@ant-design/icons";
 
 const HomePage: React.FC = () => {
-  const [data, setData] = React.useState({ data: [], loading: false });
   const [modal, setModal] = React.useState(false);
-
-  React.useEffect(() => {
-    (async () => {
-      setData({ ...data, loading: true });
-      const response = await request.get("/posts");
-      setData({ ...data, loading: false });
-      setData({ ...data, data: response.data });
-    })();
-  }, []);
+  const {data, loading} = Posts();
 
   const columns = [
     {
@@ -46,8 +37,8 @@ const HomePage: React.FC = () => {
   return (
     <div className="home_page">
       <Table
-        loading={data?.loading}
-        dataSource={data?.data}
+        loading={loading}
+        dataSource={data}
         columns={columns}
         rowKey="id"
       />
