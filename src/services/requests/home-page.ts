@@ -17,7 +17,7 @@ export const Posts = () => {
 };
 
 export const SinglePost = (postId?: number) => {
-  const [data, setData] = React.useState<any>({ data: {}, loading: false });
+  const [data, setData] = React.useState<any>({ data: [], loading: false });
 
   React.useEffect(() => {
     (async () => {

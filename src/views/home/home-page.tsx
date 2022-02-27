@@ -57,24 +57,27 @@ const HomePage: React.FC = () => {
         onCancel={() => setModal(false)}
         visible={modal}
         onOk={() => setModal(false)}
+        centered
       >
         {SinglePostData.loading ? (
           <div>Loading...</div>
         ) : (
-          <ul className="home_page-list">
-            <li className="home_page-list-item">
-              <b>Card Id:</b>
-              <p>{SinglePostData.data?.id}</p>
-            </li>
-            <li className="home_page-list-item">
-              <b>User Id:</b>
-              <p>{SinglePostData.data?.userId}</p>
-            </li>
-            <li className="home_page-list-item">
-              <b>Title:</b>
-              <p>{SinglePostData.data?.title}</p>
-            </li>
-          </ul>
+          SinglePostData?.data?.map((post: any) => (
+            <ul className="home_page-list">
+              <li className="home_page-list-item">
+                <b>Id:</b>
+                <p>{post?.id}</p>
+              </li>
+              <li className="home_page-list-item">
+                <b>Email:</b>
+                <p>{post?.email}</p>
+              </li>
+              <li className="home_page-list-item">
+                <b>Name:</b>
+                <p>{post?.name}</p>
+              </li>
+            </ul>
+          ))
         )}
       </Modal>
     </div>
