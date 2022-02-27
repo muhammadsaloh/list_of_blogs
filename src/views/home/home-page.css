@@ -1,5 +1,15 @@
+.home_page-select_box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 10px 0px;
+}
+
+.home_page-select_box-label {
+  margin-right: 10px;
+}
+
 .home_page-list {
-  margin: 0;
   padding: 0;
   padding: 10px 0px;
 }
@@ -12,6 +22,5 @@
 
 p {
   padding: 0;
-  margin: 0;
-  margin-left: 10px;
+  margin-left: 0px 0px 0px 10px;
 }

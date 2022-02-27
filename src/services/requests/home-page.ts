@@ -1,17 +1,17 @@
 import React from "react";
 import { request } from "../api";
 
-export const Posts = () => {
+export const Posts = (query?: any) => {
   const [data, setData] = React.useState({ data: [], loading: false });
 
   React.useEffect(() => {
     (async () => {
       setData({ ...data, loading: true });
-      const response = await request.get("/posts");
+      const response = await request.get(`/posts?${query}`);
       setData({ ...data, loading: false });
       setData({ ...data, data: response.data });
     })();
-  }, []);
+  }, [query]);
 
   return data;
 };
