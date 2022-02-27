@@ -23,7 +23,7 @@ export const SinglePost = (postId?: number) => {
     (async () => {
       if (postId) {
         setData({ ...data, loading: true });
-        const response = await request.get(`/posts/${postId}`);
+        const response = await request.get(`/posts/${postId}/comments`);
         setData({ ...data, loading: false });
         setData({ ...data, data: response.data });
       }
