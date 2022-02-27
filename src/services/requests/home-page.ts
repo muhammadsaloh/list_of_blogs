@@ -1,7 +1,7 @@
 import React from "react";
 import { request } from "../api";
 
-const Posts = () => {
+export const Posts = () => {
   const [data, setData] = React.useState({ data: [], loading: false });
 
   React.useEffect(() => {
@@ -13,7 +13,22 @@ const Posts = () => {
     })();
   }, []);
 
-  return data
+  return data;
 };
 
-export default Posts;
+export const SinglePost = (postId?: number) => {
+  const [data, setData] = React.useState<any>({ data: {}, loading: false });
+
+  React.useEffect(() => {
+    (async () => {
+      if (postId) {
+        setData({ ...data, loading: true });
+        const response = await request.get(`/posts/${postId}`);
+        setData({ ...data, loading: false });
+        setData({ ...data, data: response.data });
+      }
+    })();
+  }, [postId]);
+
+  return data;
+};
